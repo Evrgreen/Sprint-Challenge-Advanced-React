@@ -24,10 +24,9 @@ class PlayerList extends React.Component {
         {this.state.players.map((player) => {
           return (
             <div key={player.id}>
-              <h1>{player.name}</h1>
-              <p>{player.country}</p>
-              <p>{player.searches}</p>
-              <p>{player.id}</p>
+              <h1>Player:{player.name}</h1>
+              <p>Country:{player.country}</p>
+              <p>Searches:{player.searches}</p>
             </div>
           );
         })}

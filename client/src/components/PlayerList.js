@@ -4,7 +4,7 @@ import axios from "axios";
 class PlayerList extends React.Component {
   constructor() {
     super();
-    this.state = { players: ["andre"] };
+    this.state = { players: [] };
   }
 
   componentDidMount() {
@@ -12,11 +12,25 @@ class PlayerList extends React.Component {
       .get("http://localhost:5000/api/players")
       .then((response) => {
         console.log(response.data);
+        this.setState({ players: response.data });
       })
       .catch((error) => console.log(error));
   }
   render() {
-    return <div>{this.state.players}</div>;
+    return (
+      <div>
+        {this.state.players.map((player) => {
+          return (
+            <div key={player.id}>
+              <h1>{player.name}</h1>
+              <p>{player.country}</p>
+              <p>{player.searches}</p>
+              <p>{player.id}</p>
+            </div>
+          );
+        })}
+      </div>
+    );
   }
 }
 export default PlayerList;
